@@ -1,28 +1,40 @@
-import { saveToLS, loadFromLS } from "./localStorage";
-import lsObj from "./localStorage";
-import * as localStorageApi from "./localStorage";
+import { saveToLS, loadFromLS, cleanLS } from "./localStorage";
 
-// console.log(loadFromLS);
-console.log(lsObj);
-console.log(localStorageApi);
 
-// lsObj.load('product-info');
-
+const feedbackFormKey = 'feedback-form-state';
 const refs = {
-    readLSbtn: document.querySelector('.js-read-localStorage-btn'), 
+    feedbackForm: document.querySelector('.feedback-form'),
 }
-console.dir(refs.readLSbtn);
-
-const product = {
-    name: "panel",
-    size: "45.6mm"
+let formData = {
+    email: "",
+    message: "",
 }
-saveToLS('product-info', product);
 
-refs.readLSbtn.addEventListener('click', event => {
-    const dataFromLS = loadFromLS('product-info');
-    if (dataFromLS === null) {
-        return;
+// Check if an object with key 'feedback-form-state' exists in LocalStorage
+if (loadFromLS('feedback-form-state')) {
+    const dataLS = loadFromLS(feedbackFormKey);
+    console.log('there is data in local storage');
+    refs.feedbackForm.email.value = dataLS.email;
+    refs.feedbackForm.message.value = dataLS.message;
+}
+
+refs.feedbackForm.addEventListener('input', event => {
+    event.preventDefault();
+    formData = {
+        email: event.currentTarget.elements.email.value,
+        message: event.currentTarget.elements.message.value,
     }
-    console.log(dataFromLS);
+    saveToLS(feedbackFormKey, formData);
+})
+
+refs.feedbackForm.addEventListener('submit', event => {
+    event.preventDefault();
+    console.log(event.target.elements.email.value);
+    console.log(event.target.elements.message.value);
+    if (event.target.elements.email.value === "" || event.target.elements.message.value === "") {
+        alert('Fill please all fields');
+    }
+    console.log(formData);
+    cleanLS(feedbackFormKey);
+    refs.feedbackForm.reset();
 })

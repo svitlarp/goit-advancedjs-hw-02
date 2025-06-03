@@ -1,13 +1,13 @@
 // LocalStorage has limited memory, If we write more than there is memory (more than 5 GB) -> truble
-export const saveToLS = (key, value) => {
+export function saveToLS(key, value) {
     try {
         localStorage.setItem(key, JSON.stringify(value));
     } catch (err) {
         console.log(err);
-    }    
+    }
 }
 
-export const loadFromLS = key => {
+export function loadFromLS(key, value) {
     try {
         return JSON.parse(localStorage.getItem(key));
     } catch (err) {
@@ -15,10 +15,10 @@ export const loadFromLS = key => {
     }
 }
 
-const num1 = 10;
-export const num2 = 20;
-
-export default {
-    save: saveToLS,
-    load: loadFromLS,
-};
+export function cleanLS(key) {
+    try {
+        localStorage.removeItem(key);
+    } catch (err) {
+        console.log(err);
+    }
+}
