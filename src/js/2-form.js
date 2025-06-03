@@ -10,14 +10,15 @@ let formData = {
     message: "",
 }
 
-// Check if an object with key 'feedback-form-state' exists in LocalStorage
-if (loadFromLS('feedback-form-state')) {
-    const dataLS = loadFromLS(feedbackFormKey);
-    console.log('there is data in local storage');
-    refs.feedbackForm.email.value = dataLS.email;
-    refs.feedbackForm.message.value = dataLS.message;
+// Check if an object with key 'feedback-form-state' exists in LocalStorage -> fill form fileds and save to formData variable if exists
+const dataLS = loadFromLS(feedbackFormKey);
+if (dataLS) {
+    refs.feedbackForm.email.value = dataLS.email || "";
+    refs.feedbackForm.message.value = dataLS.message || "";
+    formData = { ...dataLS };
 }
 
+// Listen for input, save new user input to the LocalStorage
 refs.feedbackForm.addEventListener('input', event => {
     event.preventDefault();
     formData = {
@@ -25,16 +26,16 @@ refs.feedbackForm.addEventListener('input', event => {
         message: event.currentTarget.elements.message.value,
     }
     saveToLS(feedbackFormKey, formData);
-})
+});
 
+// Listen Submit Event - in case that all fields are filled -> reset form, clean LocalStorge
 refs.feedbackForm.addEventListener('submit', event => {
     event.preventDefault();
-    console.log(event.target.elements.email.value);
-    console.log(event.target.elements.message.value);
     if (event.target.elements.email.value === "" || event.target.elements.message.value === "") {
         alert('Fill please all fields');
+    } else {
+        console.log(formData);
+        cleanLS(feedbackFormKey);
+        refs.feedbackForm.reset();
     }
-    console.log(formData);
-    cleanLS(feedbackFormKey);
-    refs.feedbackForm.reset();
-})
+});
