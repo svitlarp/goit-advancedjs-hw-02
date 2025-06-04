@@ -68,7 +68,7 @@ const images = [
 ];
 
 const refs = {
-  galleryListEl: document.querySelector(".js-gallery"),
+  galleryListEl: document.querySelector(".gallery"),
 }
 console.dir(refs.galleryListEl);
 
@@ -94,7 +94,7 @@ console.dir(refs.galleryListEl);
 console.log(SimpleLightbox);
 
 // Initialize the instance of Lightbox class
-const lightbox = new SimpleLightbox('.js-gallery a', {
+const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
 });
