@@ -1,5 +1,4 @@
-# Work with LocalStorage
+# HW-10
 
-- Task 1 Gallery: Create gallery using <a>SimpleLightbox</a> librery.
-- Task2 Form: Write script that saves user input ​​to local storage or use data
-  from localstorage as user input if it exists.
+- Task 1 Timer
+- Task2 Promis Generator
