@@ -1,0 +1,47 @@
+button {
+    padding: auto;
+    width: 85px;
+    height: 40px;
+    color: #989898;
+    background-color: #CFCFCF;
+    border-radius: 8px;
+    border: none;
+    text-align: center;
+    /* align-items: center; */
+}
+
+/* TODO */
+/* #button.unactive {
+
+} */
+
+#datetime-picker {
+    padding: 8px 0 8px 16px;
+    width: 272px;
+    height: 40px;
+    border-radius: 4px;
+}
+
+/* TODO */
+/* #datetime-picker.unactive {
+
+} */
+
+.timer {
+    width: 346px;
+    height: 72px;
+    display: inline-flex;
+    gap: 24px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+.value {
+    font-size: 40px;
+    color: #2E2F42;
+}
+
+
