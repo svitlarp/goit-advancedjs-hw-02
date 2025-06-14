@@ -1,74 +1,67 @@
-.feedback-form {
+.form {
     display: flex;
     flex-direction: column;
-    width: 408px;
-    height: 296px;
-    margin-right: auto;
-    margin-left: auto;
-    padding: 24px;
+    width: 360px;
+    margin-top: 36px;
+    margin-left: 156px;
 }
 
 
 /* За замовчуванням input є рядковим елементом, який не успадковує сімейство шрифтів.  */
-input {
+input[type="number"] {
+    display: flex;
+    flex-direction: column;
     font-family: inherit;
-    color: #808080;
+    /* color: #808080; */
+    color: #2E2F42;
 }
 
-input:hover {
+input[type="number"]:hover,
+input[type="number"]:focus {
     color: #000000;
 }
 
+input[type="number"]:active {
+    outline: 1px solid #4E75FF;
+    border-radius: 4px;
+}
+
+fieldset {
+    margin-top: 16px;
+}
 
 label {
-    display: flex;
-    flex-direction: column;
-    row-gap: 8px;
     color: #808080;
 }
 
-.feedback-form button {
-    margin-top: 16px;
-    width: 95px;
-    padding: 8px 16px;
+input[type="radio"]{
+    font-family: inherit;
+    /* color: #808080; */
+    color: #2E2F42;
+    border-radius: 4px;
+}
+
+input[type="radio"]:hover,
+input[type="radio"]:focus {
+    color: #000000;
+}
+
+input[type="radio"]:active {
+    outline: 1px solid #4E75FF;
+}
+
+button {
+    margin-top: 24px;
+    width: 360px;
+    height: 40px;
+    padding: 0px 0px;
     color: #FFFFFF;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    font-weight: medium;
+    text-align: center;
     background-color: #4E75FF;
     border: none;
     border-radius: 8px;
-    text-align: center;
     opacity: 1;
 }
-
-/* 
-
-fieldset {
-    display: block;
-    min-inline-size: min-content;
-    margin-inline: 2px;
-    border-width: 2px;
-    border-style: groove;
-    border-color: threedface;
-    border-image: initial;
-    padding-block: 0.35em 0.625em;
-    padding-inline: 0.75em;
-} 
-    
-legend {
-    display: block;
-    unicode-bidi: isolate;
-    padding-inline: 2px;
-}
-
-input[type="radio" i] {
-    background-color: initial;
-    cursor: default;
-    appearance: auto;
-    box-sizing: border-box;
-    margin: 3px 3px 0px 5px;
-    padding: initial;
-    border: initial;
-}
-
-
-
- */
