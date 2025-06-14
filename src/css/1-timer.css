@@ -1,4 +1,5 @@
-button {
+.start-btn {
+    margin-left: 156px;
     padding: auto;
     width: 85px;
     height: 40px;
@@ -7,27 +8,42 @@ button {
     border-radius: 8px;
     border: none;
     text-align: center;
-    /* align-items: center; */
 }
 
-/* TODO */
-/* #button.unactive {
+/* Make Button "Start" able or disable */
+.disabled {
+    background-color: #CFCFCF;
+    color: #989898;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.6;
+}
 
-} */
+.enabled {
+    background-color: #4E75FF;
+    color: white;
+    cursor: pointer;
+    pointer-events: auto;
+    opacity: 1; 
+}
 
+.start-btn:hover {
+    background-color: #6C8CFF;
+}
+
+/* Input DateTime Picker */
 #datetime-picker {
+    margin-top: 36px;
+    margin-left: 156px;
     padding: 8px 0 8px 16px;
     width: 272px;
     height: 40px;
     border-radius: 4px;
 }
 
-/* TODO */
-/* #datetime-picker.unactive {
-
-} */
 
 .timer {
+    margin-left: 156px;
     width: 346px;
     height: 72px;
     display: inline-flex;
@@ -35,6 +51,7 @@ button {
 }
 
 .field {
+    /* margin-left: 156px; */
     display: flex;
     flex-direction: column;
 }

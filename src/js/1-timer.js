@@ -24,11 +24,8 @@ const options = {
     defaultDate: new Date(),
     minuteIncrement: 1,
     onClose(selectedDates) {
-        console.log(selectedDates);
         console.log(selectedDates[0]);
         userSelectedDate = selectedDates[0];
-        console.log('userSelectedDate:', userSelectedDate);
-        console.log('dateNow: ', dateNow);
 
         // Handle User Date to check that choosen date will be greater then now.
         if (userSelectedDate.getTime() < dateNow.getTime()) {
@@ -37,6 +34,10 @@ const options = {
                 message: 'Please choose a date in the future',
                 position: 'topCenter',
             });
+            return;
+        } else {
+            refs.buttonStartEl.classList.remove('disabled');
+            refs.buttonStartEl.classList.add('enabled');
         }
     }
 };
@@ -45,16 +46,17 @@ const options = {
 // 1 Create flatpickr instance.
 const fp = flatpickr("#datetime-picker", options);
 
+function addLeadingZero(num) {
+    return num.toString().padStart(1, "0");
+}
+
+
 // Find how many seconds left for some date
 const secondsLeft = () => {
     const dateNow = new Date();
-    console.log(dateNow);
     const userDate = fp.selectedDates[0];
     const ms = userDate.getTime() - dateNow.getTime();
     const timeLeft = convertMs(ms);
-    console.log(timeLeft);
-    console.log(timeLeft.days.toString().padStart(1, "0"));
-    console.log(typeof timeLeft.days);
     refs.days.innerHTML = timeLeft.days > 9 ? timeLeft.days : addLeadingZero(timeLeft.days);
     refs.hours.innerHTML = timeLeft.hours > 9 ? timeLeft.hours  : addLeadingZero(timeLeft.hours);
     refs.minutes.innerHTML = timeLeft.minutes > 9 ? timeLeft.minutes : addLeadingZero(timeLeft.minutes);
